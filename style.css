@@ -1,0 +1,178 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #000;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+#canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.6s ease;
+}
+
+/* ── Weather bar ─────────────────────────────────────── */
+#weather-bar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.wx-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.wx-btn:hover {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+}
+
+.wx-btn.active {
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+
+/* ── Controls hint ───────────────────────────────────── */
+#controls-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+}
+
+/* ── Mobile controls overlay ─────────────────────────── */
+#mobile-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.mobile-btn {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+.mobile-btn.small {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+#mobile-steer {
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: all;
+}
+
+.mobile-middle-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+#mobile-speed {
+  position: absolute;
+  bottom: 28px;
+  right: 18px;
+  display: flex;
+  gap: 8px;
+  pointer-events: all;
+}
+
+#mobile-top-right {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  display: flex;
+  gap: 8px;
+  pointer-events: all;
+}
+
+/* ── Start screen ───────────────────────────────────── */
+#start-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+#start-screen.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+#start-text {
+  font-size: clamp(3rem, 12vw, 6rem);
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 40px rgba(255,255,255,0.3);
+  animation: start-pulse 2.5s ease-in-out infinite;
+}
+#start-sub {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.3em;
+}
+@keyframes start-pulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Show mobile controls and hide desktop hint on small screens */
+@media (max-width: 900px) {
+  #mobile-controls {
+    display: block;
+  }
+  #controls-hint {
+    display: none;
+  }
+}

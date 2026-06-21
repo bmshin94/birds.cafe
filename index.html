@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Sim – Relaxing Ocean Flying Game</title>
+  <meta name="description" content="Fly a flock of birds over a calm ocean with day, night and storm weather, rain, lightning, ambient music and mobile-friendly controls in this relaxing WebGL bird simulator.">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vph8037o5j");
+</script>
+</head>
+<body>
+  <!-- Start screen -->
+  <div id="start-screen">
+    <div id="start-text">Start</div>
+    <div id="start-sub">click to fly</div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="weather-bar">
+      <!-- Dawn / Dusk hidden for now; only keep the main three presets -->
+      <!-- <button class="wx-btn" data-weather="dawn">Dawn</button> -->
+      <button class="wx-btn active" data-weather="day">Day</button>
+      <!-- <button class="wx-btn" data-weather="dusk">Dusk</button> -->
+      <button class="wx-btn" data-weather="night">Night</button>
+      <button class="wx-btn" data-weather="storm">Storm</button>
+      <button id="music-toggle" class="wx-btn active">Music: On</button>
+    </div>
+    <div id="controls-hint">Arrows steer · +/- speed · Space = V-formation · Day / Night / Storm buttons</div>
+    <!-- Mobile touch controls (shown on small screens) -->
+    <div id="mobile-controls">
+      <div id="mobile-steer">
+        <button id="btn-steer-up"    class="mobile-btn">▲</button>
+        <div class="mobile-middle-row">
+          <button id="btn-steer-left"  class="mobile-btn">◀</button>
+          <button id="btn-steer-down"  class="mobile-btn">▼</button>
+          <button id="btn-steer-right" class="mobile-btn">▶</button>
+        </div>
+      </div>
+      <div id="mobile-speed">
+        <button id="btn-speed-down" class="mobile-btn">−</button>
+        <button id="btn-speed-up"   class="mobile-btn">+</button>
+      </div>
+      <div id="mobile-top-right">
+        <button id="btn-formation"  class="mobile-btn small">V</button>
+        <button id="btn-fullscreen" class="mobile-btn small">⤢</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/objects/Sky.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/objects/Sky.js",
+      "three/addons/objects/Water.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/objects/Water.js",
+      "three/addons/postprocessing/EffectComposer.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js",
+      "three/addons/postprocessing/RenderPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js",
+      "three/addons/postprocessing/UnrealBloomPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "three/addons/postprocessing/OutputPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/OutputPass.js",
+      "three/addons/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+      "three/addons/lines/Line2.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/lines/Line2.js",
+      "three/addons/lines/LineGeometry.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/lines/LineGeometry.js",
+      "three/addons/lines/LineMaterial.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/lines/LineMaterial.js"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
